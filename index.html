@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>App Regritros</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <!-- CSS Files -->
+    <link href="assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <!--Style login-->
+    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/indexcam.css">
+
+
+  </head>
+  <body>
+    
+<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+      	<div class="login100-pic js-tilt" data-tilt>
+            <h2 style="text-align:center;">Escaner</h2>
+          <video id="preview"  width="320" height="240" ></video>
+          <br>
+          <br>
+          <h3 style="text-align:center;">Coloca tu codigo QR hasta que se te indique</h3>
+				</div>
+				<form class="login100-form validate-form" action="login.html">
+          <div class="row">
+            <div class="col-12" style="text-align:center; padding-top:20%;">
+              <h2 style="  text-align: center;">
+                Admin Login
+    					</h2>
+              <br>
+              <br>
+              <button type="submit" class="btn btn-primary">Administrador</button>
+            </div>
+          </div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+    <!--   Core JS Files   -->
+    <script src="assets/js/core/jquery.min.js"></script>
+    <script src="assets/js/core/popper.min.js"></script>
+    <script src="assets/js/core/bootstrap-material-design.min.js"></script>
+    <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <!-- Forms Validations Plugin -->
+    <script src="assets/js/plugins/jquery.validate.min.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="assets/js/plugins/bootstrap-notify.js"></script>
+
+    <script src="assets/js/instascan.min.js"></script>
+
+    <script type="text/javascript">
+      let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+      scanner.addListener('scan', function (content) {
+        alert(content);
+      });
+      Instascan.Camera.getCameras().then(function (cameras) {
+        if (cameras.length > 0) {
+          scanner.start(cameras[0]);
+        } else {
+          console.error('No se detectaron camaras.');
+        }
+      }).catch(function (e) {
+        console.error(e);
+      });
+    </script>
+
+  </body>
+</html>

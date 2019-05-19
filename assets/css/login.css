@@ -1,0 +1,7 @@
+body {
+  background-image:url("../img/back.jpg");
+  background-color: #cccccc;
+}
+.row{
+  margin-right: 0px !important;
+}
