@@ -19,6 +19,33 @@
 </head>
 
 <body class="">
+
+
+  <?php
+  include 'php/mainconn.php';
+
+  $Mysql = new MysqlConn;
+
+  if (isset($_COOKIE["usr"]) && isset($_COOKIE["pass"])) {
+    // code...
+
+  }else {
+    // code...
+    setcookie("usr",$_GET['usr'],time()+3600);
+    setcookie("pass",$_GET['pass'],time()+3600);
+
+    if ($Mysql->FunctionName($_GET['usr'],$_GET['pass']) == true) {
+
+    }else {
+      // code...
+      header("Location:index.html");
+    }
+
+  }
+
+
+   ?>
+
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="assets/img/sidebar-1.jpg">
       <div class="logo">
@@ -28,14 +55,14 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item ">
-            <a class="nav-link" href="./dashboard.html">
+          <li class="nav-item active">
+            <a class="nav-link" href="./dashboard.php">
               <i class="material-icons">dashboard</i>
               <p>PanelPrincipal</p>
             </a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="./users.html">
+          <li class="nav-item ">
+            <a class="nav-link" href="./users.php">
               <i class="material-icons">person</i>
               <p>Usuarios</p>
             </a>
@@ -68,7 +95,7 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                   <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter">Cambio de contraseña</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="login.html">Cerrar sesion</a>
+                  <a class="dropdown-item" onclick="exit()">Cerrar sesion</a>
                 </div>
               </li>
             </ul>
@@ -138,7 +165,7 @@ div.dataTables_wrapper {
 </style>
 
       <div class="card">
-        <h3 class="card-header">Informacion de usuarios</h3>
+        <h3 class="card-header">Registros hoy</h2>
         <div class="card-body">
           <table id="" class="display" style="width:100%">
               <thead>
@@ -249,9 +276,100 @@ div.dataTables_wrapper {
          </div>
         </div>
 
+        <div class="card">
+          <h2 class="card-header">Todos los registros</h2>
+          <div class="card-body">
+            <table id="" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Office</th>
+                            <th>Age</th>
+                            <th>Salary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tiger Nixon</td>
+                            <td>System Architect</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+                            <td>$320,800</td>
+                        </tr>
+                        <tr>
+                            <td>Cedric Kelly</td>
+                            <td>Senior Javascript Developer</td>
+                            <td>Edinburgh</td>
+                            <td>22</td>
+                            <td>$433,060</td>
+                        </tr>
+                        <tr>
+                            <td>Sonya Frost</td>
+                            <td>Software Engineer</td>
+                            <td>Edinburgh</td>
+                            <td>23</td>
+                            <td>$103,600</td>
+                        </tr>
+                        <tr>
+                            <td>Quinn Flynn</td>
+                            <td>Support Lead</td>
+                            <td>Edinburgh</td>
+                            <td>22</td>
+                            <td>$342,000</td>
+                        </tr>
+                        <tr>
+                            <td>Dai Rios</td>
+                            <td>Personnel Lead</td>
+                            <td>Edinburgh</td>
+                            <td>35</td>
+                            <td>$217,500</td>
+                        </tr>
+                        <tr>
+                            <td>Gavin Joyce</td>
+                            <td>Developer</td>
+                            <td>Edinburgh</td>
+                            <td>42</td>
+                            <td>$92,575</td>
+                        </tr>
+                        <tr>
+                            <td>Martena Mccray</td>
+                            <td>Post-Sales support</td>
+                            <td>Edinburgh</td>
+                            <td>46</td>
+                            <td>$324,050</td>
+                        </tr>
+                        <tr>
+                            <td>Jennifer Acosta</td>
+                            <td>Junior Javascript Developer</td>
+                            <td>Edinburgh</td>
+                            <td>43</td>
+                            <td>$75,650</td>
+                        </tr>
+                        <tr>
+                            <td>Shad Decker</td>
+                            <td>Regional Director</td>
+                            <td>Edinburgh</td>
+                            <td>51</td>
+                            <td>$183,000</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Office</th>
+                            <th>Age</th>
+                            <th>Salary</th>
+                        </tr>
+                    </tfoot>
+                </table>
+           </div>
+          </div>
         </div>
       </div>
     </div>
+  </div>
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -327,6 +445,7 @@ div.dataTables_wrapper {
 
 
     $(document).ready(function() {
+
 
       $('table.display').DataTable();
 
@@ -505,7 +624,21 @@ div.dataTables_wrapper {
       // Javascript method's body can be found in assets/js/demos.js
       md.initDashboardPageCharts();
 
+      var uri = window.location.toString();
+      if (uri.indexOf("?") > 0) {
+          var clean_uri = uri.substring(0, uri.indexOf("?"));
+          window.history.replaceState({}, document.title, clean_uri);
+      }
+
+
     });
+
+
+    function exit() {
+      window.location.href ='logout.php';   var slecttoconfig = selected.parentNode.parentElement.children[0].textContent;     // Gets a descendent with class="nr" .text();         // Retrieves the text within <td>
+
+    }
+
   </script>
 </body>
 

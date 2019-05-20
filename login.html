@@ -31,12 +31,12 @@
         <p>Introduce tu usuario y contraseña para el administrador</p>
          <form id="Login" action="dashboard.html">
              <div class="form-group">
-                 <input type="email" class="form-control" id="inputEmail" placeholder="Usuario">
+                 <input type="email" class="form-control" id="inputUser" placeholder="Usuario">
              </div>
              <div class="form-group">
                  <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña">
              </div>
-             <button type="submit" class="btn btn-primary">Entrar</button>
+             <button type="submit" class="btn btn-primary" onclick="Login()">Entrar</button>
          </form>
        </div>
       </div>
@@ -54,11 +54,27 @@
 
 <script type="text/javascript">
 
-function CheckUser() {
-  var usr =$("#inputEmail").val();
-  var pass=$("#inputPassword").val();
-  
-}
+function Login() {
+  var param = {
+      "user" : $("#inputUser").val(),
+      "pass" : $("#inputPassword").val()
+          };
+
+  $.ajax({
+        data:  param, //datos que se envian a traves de ajax
+        url:   'php/checkuser.php', //archivo que recibe la peticion
+        type:  'post', //método de envio
+        success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+                      if (Number(response) == true) {
+
+                       window.location.href ='dashboard.php?usr='+param["user"]+"&pass="+param["pass"];
+
+                      }else {
+                        alert("Error en el login.");
+                      }
+                    }
+        });
+  }
 
 </script>
 
