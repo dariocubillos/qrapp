@@ -57,7 +57,7 @@ function FunctionName($usr,$pass)
 {
   $user = false;
   // code...
-  $result = $this->conn->query("SELECT * FROM users WHERE ID='$usr' && Pass='$pass' limit 1");
+  $result = $this->conn->query("SELECT * FROM users WHERE id='$usr' && pass='$pass' limit 1");
 
   if ($result->num_rows > 0) {
     // code...
