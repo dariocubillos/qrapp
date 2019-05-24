@@ -27,18 +27,13 @@
           <br>
           <h3 style="text-align:center;">Coloca tu codigo QR hasta que se te indique</h3>
 				</div>
-				<form class="login100-form validate-form" action="login.html">
           <div class="row">
-            <div class="col-12" style="text-align:center; padding-top:20%;">
-              <h2 style="  text-align: center;">
-                Admin Loginn
-    					</h2>
+            <div class="col-12" style="text-align:center; padding-top:10rem;">
+              <h1 id="titleinfo" style="text-align: center;">Esperando...</h1>
               <br>
               <br>
-              <button type="submit" class="btn btn-primary">Administrador</button>
             </div>
           </div>
-				</form>
 			</div>
 		</div>
 	</div>
@@ -57,7 +52,13 @@
     <script type="text/javascript">
       let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
       scanner.addListener('scan', function (content) {
-        alert(content);
+
+        alert(content); // code for add function to register
+
+        document.getElementById("titleinfo").innerHTML = "Aprobado...";
+        setTimeout(function () {
+            document.getElementById("titleinfo").innerHTML = "Esperando...";
+          }, 3000);
       });
       Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
