@@ -90,9 +90,10 @@
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                  <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter">Cambio de contraseña</a>
+                  <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter" href="#">Añadir usuarios</a>
+                  <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter" href="#">Cambio de contraseña</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item"  onclick="exit()">Cerrar sesion</a>
+                  <a class="dropdown-item" onclick="exit()" href="#">Cerrar sesion</a>
                 </div>
               </li>
             </ul>
@@ -337,8 +338,6 @@ div.dataTables_wrapper {
   <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
   <!-- Library for adding dinamically elements -->
   <script src="assets/js/plugins/arrive.min.js"></script>
-  <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chartist JS -->
   <script src="assets/js/plugins/chartist.min.js"></script>
   <!--  Notifications Plugin    -->
@@ -347,9 +346,8 @@ div.dataTables_wrapper {
   <script src="assets/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="assets/demo/demo.js"></script>
+  <script src="js/GeneralFuctions.js"></script>
   <script>
-
-
     $(document).ready(function() {
 
       $('table.display').DataTable();
@@ -509,38 +507,17 @@ div.dataTables_wrapper {
               md.misc.sidebar_mini_active = true;
             }, 300);
           }
-
           // we simulate the window Resize so the charts will get updated in realtime.
           var simulateWindowResize = setInterval(function() {
             window.dispatchEvent(new Event('resize'));
           }, 180);
-
           // we stop the simulation of Window Resize after the animations are completed
           setTimeout(function() {
             clearInterval(simulateWindowResize);
           }, 1000);
-
         });
       });
     });
-  </script>
-  <script>
-    $(document).ready(function() {
-      // Javascript method's body can be found in assets/js/demos.js
-      md.initDashboardPageCharts();
-
-      var uri = window.location.toString();
-      if (uri.indexOf("?") > 0) {
-          var clean_uri = uri.substring(0, uri.indexOf("?"));
-          window.history.replaceState({}, document.title, clean_uri);
-      }
-
-    });
-
-    function exit() {
-      window.location.href ='logout.php';   var slecttoconfig = selected.parentNode.parentElement.children[0].textContent;     // Gets a descendent with class="nr" .text();         // Retrieves the text within <td>
-
-    }
   </script>
 </body>
 

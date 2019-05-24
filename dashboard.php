@@ -93,9 +93,10 @@
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                  <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter">Cambio de contraseña</a>
+                  <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter" href="#">Añadir usuarios</a>
+                  <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter" href="#">Cambio de contraseña</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" onclick="exit()">Cerrar sesion</a>
+                  <a class="dropdown-item" onclick="exit()" href="#">Cerrar sesion</a>
                 </div>
               </li>
             </ul>
@@ -432,8 +433,6 @@ div.dataTables_wrapper {
   <!-- Library for adding dinamically elements -->
   <script src="assets/js/plugins/arrive.min.js"></script>
   <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-  <!-- Chartist JS -->
   <script src="assets/js/plugins/chartist.min.js"></script>
   <!--  Notifications Plugin    -->
   <script src="assets/js/plugins/bootstrap-notify.js"></script>
@@ -441,9 +440,9 @@ div.dataTables_wrapper {
   <script src="assets/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="assets/demo/demo.js"></script>
+  <script src="js/GeneralFuctions.js"></script>
+
   <script>
-
-
     $(document).ready(function() {
 
 
@@ -618,27 +617,6 @@ div.dataTables_wrapper {
         });
       });
     });
-  </script>
-  <script>
-    $(document).ready(function() {
-      // Javascript method's body can be found in assets/js/demos.js
-      md.initDashboardPageCharts();
-
-      var uri = window.location.toString();
-      if (uri.indexOf("?") > 0) {
-          var clean_uri = uri.substring(0, uri.indexOf("?"));
-          window.history.replaceState({}, document.title, clean_uri);
-      }
-
-
-    });
-
-
-    function exit() {
-      window.location.href ='logout.php';   var slecttoconfig = selected.parentNode.parentElement.children[0].textContent;     // Gets a descendent with class="nr" .text();         // Retrieves the text within <td>
-
-    }
-
   </script>
 </body>
 
