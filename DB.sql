@@ -16,4 +16,8 @@ create table if not exists reg(
 id int primary key auto_increment,
 userfk varchar(12),
 enter_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
-exit_time TIMESTAMP NULL DEFAULT NULL, FOREIGN KEY (userfk) REFERENCES users(id));
+exit_time TIMESTAMP NULL DEFAULT 0, FOREIGN KEY (userfk) REFERENCES users(id),
+day_work DATE NOT NULL
+);
+
+/*update the database 25 may*/

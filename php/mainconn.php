@@ -71,12 +71,51 @@ function FunctionName($usr,$pass)
   return $user;
 }
 
-function RegisterUser($CURP,$Nombre, $Apellidos, $Email,$Telefono,$Direccion,$Pass)
+function RegisterUser($id,$Nombre, $Apellidos, $Puesto, $Telefono , $Email)
 {
   // code...
-$result = $this->conn->query("INSERT INTO `users` (`ID`, `Name`, `LastName`, `Email`, `Tel`, `Addres`, `Pass`) VALUES ('$CURP','$Nombre','$Apellidos', '$Email','$Telefono','$Direccion','$Pass')");
+$result = $this->conn->query("INSERT INTO `users` (`id`, `firstname`, `lastname`, `stall` ,`tel`,`email`) VALUES ('$id','$Nombre','$Apellidos', '$Puesto','$Telefono','$Email')");
 return($result);
 }
+
+
+public function RegisterToday($usr)
+{
+  // code...
+
+$result = false;
+
+// check if user exists
+
+$uservalidate = $this->conn->query("SELECT * FROM  users WHERE id = '$usr' "); // check if user is register today;
+
+
+if ($uservalidate->num_rows > 0) {
+  // code...
+  $result0 = $this->conn->query("SELECT * FROM reg WHERE userfk = '$usr'  AND  day_work = CURRENT_DATE()"); // check if user is register today;
+
+  if ($result0->num_rows > 0) {    // code...
+
+    //check if have 2 exits
+    $result1 = $this->conn->query("SELECT * FROM reg WHERE userfk = '$usr'  AND  day_work = CURRENT_DATE() AND exit_time = "0000-00-00 00:00:00""); // check if user is register today;
+
+    if ($result1->num_rows > 0) {
+      // code...
+      $result = $this->conn->query("UPDATE `reg` SET  `exit_time`= CURRENT_TIMESTAMP WHERE userfk = '$usr' AND day_work = CURRENT_DATE()"); //if exist reg today
+    }
+
+  }else {
+    // code...
+    $result = $this->conn->query("INSERT INTO `reg` ( `userfk` , `day_work`) VALUES ('$usr',CURRENT_DATE())"); // if not exist today
+
+  }
+
+}
+
+  return($result);
+}
+
+
 
 function RegisterBook($Isbn,$Titulo,$Autor,$Existencia,$Lugar,$Paginas,$Precio,$Publicacion)
 {

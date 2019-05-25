@@ -93,7 +93,7 @@
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                  <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter" href="#">Añadir usuarios</a>
+                  <a class="dropdown-item" data-toggle="modal" data-target="#NewUser" href="#">Añadir usuarios</a>
                   <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter" href="#">Cambio de contraseña</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" onclick="exit()" href="#">Cerrar sesion</a>
@@ -371,7 +371,6 @@ div.dataTables_wrapper {
       </div>
     </div>
   </div>
-
   <!-- Modal -->
   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -389,14 +388,61 @@ div.dataTables_wrapper {
           <div class="form-group">
               <input type="password" class="form-control" id="inputPassword1" placeholder="Confirmar Contraseña">
           </div>
-        </div>
+       </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Guardar Cambios</button>
+          <button type="button" class="btn btn-primary" onclick="savepass()">Guardar Cambios</button>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="NewUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLongTitle">Añadir Usuario</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+              <div class="col-12">
+                <input id="nss" class="form-control" type="text" placeholder="Numero de seguridad social">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <input id="nombre" class="form-control" type="text" placeholder="Nombre">
+            </div>
+            <div class="col-6">
+              <input id="apellidos" class="form-control" type="text" placeholder="Apellidos">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <input id="puesto" class="form-control" type="text" placeholder="Puesto">
+            </div>
+            <div class="col-6">
+              <input id="telefono" class="form-control" type="number" placeholder="Telefono">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <input id="email" class="form-control" type="text" placeholder="Email">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" onclick="saveuser()">Guardar Usuario</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 
     <!--   Core JS Files   -->
@@ -444,11 +490,7 @@ div.dataTables_wrapper {
 
   <script>
     $(document).ready(function() {
-
-
       $('table.display').DataTable();
-
-
       $().ready(function() {
         $sidebar = $('.sidebar');
 
@@ -618,6 +660,8 @@ div.dataTables_wrapper {
       });
     });
   </script>
+
+
 </body>
 
 </html>

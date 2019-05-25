@@ -55,7 +55,24 @@
 
         alert(content); // code for add function to register
 
-        document.getElementById("titleinfo").innerHTML = "Aprobado...";
+        var param = {
+                      "usr" : content
+                    };
+
+                    $.ajax({
+                          data:  param, //datos que se envian a traves de ajax
+                          url:   'php/addreg.php', //archivo que recibe la peticion
+                          type:  'post', //método de envio
+                          success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+                                        if (Number(response) == true) {
+                                          document.getElementById("titleinfo").innerHTML = "Aprobado...";
+                                        }else {
+                                          document.getElementById("titleinfo").innerHTML = "Error...";
+                                        }
+                                  }
+                           });
+
+
         setTimeout(function () {
             document.getElementById("titleinfo").innerHTML = "Esperando...";
           }, 3000);
