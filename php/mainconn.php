@@ -97,7 +97,7 @@ if ($uservalidate->num_rows > 0) {
   if ($result0->num_rows > 0) {    // code...
 
     //check if have 2 exits
-    $result1 = $this->conn->query("SELECT * FROM reg WHERE userfk = '$usr'  AND  day_work = CURRENT_DATE() AND exit_time = "0000-00-00 00:00:00""); // check if user is register today;
+    $result1 = $this->conn->query("SELECT * FROM reg WHERE userfk = '$usr'  AND  day_work = CURRENT_DATE() AND exit_time = '0000-00-00 00:00:00'"); // check if user is register today;
 
     if ($result1->num_rows > 0) {
       // code...
