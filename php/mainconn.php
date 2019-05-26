@@ -96,7 +96,7 @@ public function RegisterToday($usr)
 {
   // code...
 
-$result = false;
+$result = 0;
 
 // check if user exists
 
