@@ -111,7 +111,7 @@
               <div class="card card-stats">
                 <div class="card-header card-header-warning card-header-icon">
                   <div class="card-icon">
-                    <i class="material-icons">content_copy</i>
+                    <i class="material-icons">assignment_ind</i>
                   </div>
                   <p class="card-category">Usuarios</p>
                   <h3 class="card-title"> <?php  $Mysql->QueryEcho($querycountusers); ?>
@@ -128,7 +128,7 @@
               <div class="card card-stats">
                 <div class="card-header card-header-success card-header-icon">
                   <div class="card-icon">
-                    <i class="material-icons">store</i>
+                    <i class="material-icons">assignment_turned_in</i>
                   </div>
                   <p class="card-category">Entradas Hoy</p>
                   <h3 class="card-title"><?php $Mysql->QueryEcho($querycountenters);?>
@@ -170,7 +170,7 @@ div.dataTables_wrapper {
       <div class="card">
         <h3 class="card-header">Registros hoy</h2>
         <div class="card-body">
-          <table id="" class="display" style="width:100%">
+          <table id="regtoday" class="display" style="width:100%">
               <thead>
                   <tr>
                       <th>Name</th>
@@ -181,90 +181,6 @@ div.dataTables_wrapper {
                   </tr>
               </thead>
               <tbody>
-                  <tr>
-                      <td>Jena Gaines</td>
-                      <td>Office Manager</td>
-                      <td>London</td>
-                      <td>30</td>
-                      <td>$90,560</td>
-                  </tr>
-                  <tr>
-                      <td>Haley Kennedy</td>
-                      <td>Senior Marketing Designer</td>
-                      <td>London</td>
-                      <td>43</td>
-                      <td>$313,500</td>
-                  </tr>
-                  <tr>
-                      <td>Tatyana Fitzpatrick</td>
-                      <td>Regional Director</td>
-                      <td>London</td>
-                      <td>19</td>
-                      <td>$385,750</td>
-                  </tr>
-                  <tr>
-                      <td>Michael Silva</td>
-                      <td>Marketing Designer</td>
-                      <td>London</td>
-                      <td>66</td>
-                      <td>$198,500</td>
-                  </tr>
-                  <tr>
-                      <td>Bradley Greer</td>
-                      <td>Software Engineer</td>
-                      <td>London</td>
-                      <td>41</td>
-                      <td>$132,000</td>
-                  </tr>
-                  <tr>
-                      <td>Angelica Ramos</td>
-                      <td>Chief Executive Officer (CEO)</td>
-                      <td>London</td>
-                      <td>47</td>
-                      <td>$1,200,000</td>
-                  </tr>
-                  <tr>
-                      <td>Suki Burks</td>
-                      <td>Developer</td>
-                      <td>London</td>
-                      <td>53</td>
-                      <td>$114,500</td>
-                  </tr>
-                  <tr>
-                      <td>Prescott Bartlett</td>
-                      <td>Technical Author</td>
-                      <td>London</td>
-                      <td>27</td>
-                      <td>$145,000</td>
-                  </tr>
-                  <tr>
-                      <td>Timothy Mooney</td>
-                      <td>Office Manager</td>
-                      <td>London</td>
-                      <td>37</td>
-                      <td>$136,200</td>
-                  </tr>
-                  <tr>
-                      <td>Bruno Nash</td>
-                      <td>Software Engineer</td>
-                      <td>London</td>
-                      <td>38</td>
-                      <td>$163,500</td>
-                  </tr>
-                  <tr>
-                      <td>Hermione Butler</td>
-                      <td>Regional Director</td>
-                      <td>London</td>
-                      <td>47</td>
-                      <td>$356,250</td>
-                  </tr>
-                  <tr>
-                      <td>Lael Greer</td>
-                      <td>Systems Administrator</td>
-                      <td>London</td>
-                      <td>21</td>
-                      <td>$103,500</td>
-                  </tr>
               </tbody>
               <tfoot>
                   <tr>
@@ -282,88 +198,26 @@ div.dataTables_wrapper {
         <div class="card">
           <h2 class="card-header">Todos los registros</h2>
           <div class="card-body">
-            <table id="" class="display" style="width:100%">
+            <table id="allreg" class="display" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Salary</th>
+                            <th>ID Registro</th>
+                            <th>Usuario</th>
+                            <th>Entrada</th>
+                            <th>Salida</th>
+                            <th>Dia</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>$320,800</td>
-                        </tr>
-                        <tr>
-                            <td>Cedric Kelly</td>
-                            <td>Senior Javascript Developer</td>
-                            <td>Edinburgh</td>
-                            <td>22</td>
-                            <td>$433,060</td>
-                        </tr>
-                        <tr>
-                            <td>Sonya Frost</td>
-                            <td>Software Engineer</td>
-                            <td>Edinburgh</td>
-                            <td>23</td>
-                            <td>$103,600</td>
-                        </tr>
-                        <tr>
-                            <td>Quinn Flynn</td>
-                            <td>Support Lead</td>
-                            <td>Edinburgh</td>
-                            <td>22</td>
-                            <td>$342,000</td>
-                        </tr>
-                        <tr>
-                            <td>Dai Rios</td>
-                            <td>Personnel Lead</td>
-                            <td>Edinburgh</td>
-                            <td>35</td>
-                            <td>$217,500</td>
-                        </tr>
-                        <tr>
-                            <td>Gavin Joyce</td>
-                            <td>Developer</td>
-                            <td>Edinburgh</td>
-                            <td>42</td>
-                            <td>$92,575</td>
-                        </tr>
-                        <tr>
-                            <td>Martena Mccray</td>
-                            <td>Post-Sales support</td>
-                            <td>Edinburgh</td>
-                            <td>46</td>
-                            <td>$324,050</td>
-                        </tr>
-                        <tr>
-                            <td>Jennifer Acosta</td>
-                            <td>Junior Javascript Developer</td>
-                            <td>Edinburgh</td>
-                            <td>43</td>
-                            <td>$75,650</td>
-                        </tr>
-                        <tr>
-                            <td>Shad Decker</td>
-                            <td>Regional Director</td>
-                            <td>Edinburgh</td>
-                            <td>51</td>
-                            <td>$183,000</td>
-                        </tr>
+
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Salary</th>
+                          <th>ID Registro</th>
+                          <th>Usuario</th>
+                          <th>Entrada</th>
+                          <th>Salida</th>
+                          <th>Dia</th>
                         </tr>
                     </tfoot>
                 </table>
@@ -489,10 +343,62 @@ div.dataTables_wrapper {
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="assets/demo/demo.js"></script>
   <script src="js/GeneralFuctions.js"></script>
+  <script src="js/globalvarfun.js"></script>
+
 
   <script>
+
+  function RealoadTableAllReg() {
+    $.ajax({
+      type : 'POST',
+      url  : 'php/getregs.php',
+      dataType: 'json',
+      cache: false,
+      success :  function(result)
+          {
+           $('#allreg').DataTable({
+                  language:languageesp,
+                  "data": result,
+                  columns: [
+                    { "data": "id" },
+                    { "data": "userfk" },
+                    { "data": "enter_time" },
+                    { "data": "exit_time" },
+                    { "data": "day_work" },
+                  ],
+                });
+          }
+      });
+  }
+
+  function RealoadTableAllRegToday() {
+    $.ajax({
+      type : 'POST',
+      url  : 'php/getregstoday.php',
+      dataType: 'json',
+      cache: false,
+      success :  function(result)
+          {
+           $('#regtoday').DataTable({
+                  language:languageesp,
+                  "data": result,
+                  columns: [
+                    { "data": "id" },
+                    { "data": "userfk" },
+                    { "data": "enter_time" },
+                    { "data": "exit_time" },
+                    { "data": "day_work" },
+                  ],
+                });
+          }
+      });
+  }
+
     $(document).ready(function() {
-      $('table.display').DataTable();
+
+      RealoadTableAllReg();
+      RealoadTableAllRegToday();
+
       $().ready(function() {
         $sidebar = $('.sidebar');
 

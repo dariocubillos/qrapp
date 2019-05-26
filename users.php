@@ -108,7 +108,7 @@
               <div class="card card-stats">
                 <div class="card-header card-header-warning card-header-icon">
                   <div class="card-icon">
-                    <i class="material-icons">content_copy</i>
+                    <i class="material-icons">assignment_ind</i>
                   </div>
                   <p class="card-category">Usuarios</p>
                   <h3 class="card-title"> <?php  $Mysql->QueryEcho($querycountusers); ?>
@@ -125,7 +125,7 @@
               <div class="card card-stats">
                 <div class="card-header card-header-success card-header-icon">
                   <div class="card-icon">
-                    <i class="material-icons">store</i>
+                    <i class="material-icons">assignment_turned_in</i>
                   </div>
                   <p class="card-category">Entradas Hoy</p>
                   <h3 class="card-title"><?php $Mysql->QueryEcho($querycountenters);?>
