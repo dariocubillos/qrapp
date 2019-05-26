@@ -173,22 +173,22 @@ div.dataTables_wrapper {
           <table id="regtoday" class="display" style="width:100%">
               <thead>
                   <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Salary</th>
+                    <th>ID Registro</th>
+                    <th>Usuario</th>
+                    <th>Entrada</th>
+                    <th>Salida</th>
+                    <th>Dia</th>
                   </tr>
               </thead>
               <tbody>
               </tbody>
               <tfoot>
                   <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Salary</th>
+                    <th>ID Registro</th>
+                    <th>Usuario</th>
+                    <th>Entrada</th>
+                    <th>Salida</th>
+                    <th>Dia</th>
                   </tr>
               </tfoot>
           </table>
