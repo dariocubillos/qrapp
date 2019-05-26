@@ -24,6 +24,7 @@
   <?php
   include 'php/mainconn.php';
 
+
   $Mysql = new MysqlConn;
 
   if (isset($_COOKIE["usr"]) && isset($_COOKIE["pass"])) {
@@ -42,7 +43,6 @@
     }
 
   }
-
 
    ?>
 
@@ -114,7 +114,7 @@
                     <i class="material-icons">content_copy</i>
                   </div>
                   <p class="card-category">Usuarios</p>
-                  <h3 class="card-title">50
+                  <h3 class="card-title"> <?php  $Mysql->QueryEcho($querycountusers); ?>
                   </h3>
                 </div>
                 <div class="card-footer">
@@ -131,7 +131,8 @@
                     <i class="material-icons">store</i>
                   </div>
                   <p class="card-category">Entradas Hoy</p>
-                  <h3 class="card-title">25</h3>
+                  <h3 class="card-title"><?php $Mysql->QueryEcho($querycountenters);?>
+                  </h3>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
@@ -147,7 +148,8 @@
                     <i class="material-icons">info_outline</i>
                   </div>
                   <p class="card-category">Salidas Hoy</p>
-                  <h3 class="card-title">1</h3>
+                  <h3 class="card-title"><?php $Mysql->QueryEcho($querycountexits);?>
+                  </h3>
                 </div>
                 <div class="card-footer">
                   <div class="stats">

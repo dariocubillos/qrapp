@@ -16,13 +16,13 @@
   <link href="assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="assets/demo/demo.css" rel="stylesheet" />
+
 </head>
 
 <body class="">
 
   <?php
   include 'php/mainconn.php';
-
   $Mysql = new MysqlConn;
 
   if (isset($_COOKIE["usr"]) && isset($_COOKIE["pass"])) {
@@ -111,7 +111,7 @@
                     <i class="material-icons">content_copy</i>
                   </div>
                   <p class="card-category">Usuarios</p>
-                  <h3 class="card-title">50
+                  <h3 class="card-title"> <?php  $Mysql->QueryEcho($querycountusers); ?>
                   </h3>
                 </div>
                 <div class="card-footer">
@@ -128,7 +128,8 @@
                     <i class="material-icons">store</i>
                   </div>
                   <p class="card-category">Entradas Hoy</p>
-                  <h3 class="card-title">25</h3>
+                  <h3 class="card-title"><?php $Mysql->QueryEcho($querycountenters);?>
+                  </h3>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
@@ -144,7 +145,8 @@
                     <i class="material-icons">info_outline</i>
                   </div>
                   <p class="card-category">Salidas Hoy</p>
-                  <h3 class="card-title">1</h3>
+                  <h3 class="card-title"><?php $Mysql->QueryEcho($querycountexits);?>
+                  </h3>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
@@ -165,109 +167,34 @@ div.dataTables_wrapper {
       <div class="card">
         <h3 class="card-header">Informacion de usuarios</h3>
         <div class="card-body">
-          <table id="" class="display" style="width:100%">
+          <table id="users" class="display" style="width:100%">
               <thead>
                   <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Salary</th>
+                      <th>NSS</th>
+                      <th>Nombre</th>
+                      <th>Apellidos</th>
+                      <th>Puesto</th>
+                      <th>Telefono</th>
+                      <th>Email</th>
+                      <th>Fecha Registro</th>
+                      <th>Configurar</th>
+                      <th>Descargar QR</th>
                   </tr>
               </thead>
               <tbody>
-                  <tr>
-                      <td>Jena Gaines</td>
-                      <td>Office Manager</td>
-                      <td>London</td>
-                      <td>30</td>
-                      <td>$90,560</td>
-                  </tr>
-                  <tr>
-                      <td>Haley Kennedy</td>
-                      <td>Senior Marketing Designer</td>
-                      <td>London</td>
-                      <td>43</td>
-                      <td>$313,500</td>
-                  </tr>
-                  <tr>
-                      <td>Tatyana Fitzpatrick</td>
-                      <td>Regional Director</td>
-                      <td>London</td>
-                      <td>19</td>
-                      <td>$385,750</td>
-                  </tr>
-                  <tr>
-                      <td>Michael Silva</td>
-                      <td>Marketing Designer</td>
-                      <td>London</td>
-                      <td>66</td>
-                      <td>$198,500</td>
-                  </tr>
-                  <tr>
-                      <td>Bradley Greer</td>
-                      <td>Software Engineer</td>
-                      <td>London</td>
-                      <td>41</td>
-                      <td>$132,000</td>
-                  </tr>
-                  <tr>
-                      <td>Angelica Ramos</td>
-                      <td>Chief Executive Officer (CEO)</td>
-                      <td>London</td>
-                      <td>47</td>
-                      <td>$1,200,000</td>
-                  </tr>
-                  <tr>
-                      <td>Suki Burks</td>
-                      <td>Developer</td>
-                      <td>London</td>
-                      <td>53</td>
-                      <td>$114,500</td>
-                  </tr>
-                  <tr>
-                      <td>Prescott Bartlett</td>
-                      <td>Technical Author</td>
-                      <td>London</td>
-                      <td>27</td>
-                      <td>$145,000</td>
-                  </tr>
-                  <tr>
-                      <td>Timothy Mooney</td>
-                      <td>Office Manager</td>
-                      <td>London</td>
-                      <td>37</td>
-                      <td>$136,200</td>
-                  </tr>
-                  <tr>
-                      <td>Bruno Nash</td>
-                      <td>Software Engineer</td>
-                      <td>London</td>
-                      <td>38</td>
-                      <td>$163,500</td>
-                  </tr>
-                  <tr>
-                      <td>Hermione Butler</td>
-                      <td>Regional Director</td>
-                      <td>London</td>
-                      <td>47</td>
-                      <td>$356,250</td>
-                  </tr>
-                  <tr>
-                      <td>Lael Greer</td>
-                      <td>Systems Administrator</td>
-                      <td>London</td>
-                      <td>21</td>
-                      <td>$103,500</td>
-                  </tr>
+
               </tbody>
               <tfoot>
                   <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Salary</th>
+                      <th>NSS</th>
+                      <th>Nombre</th>
+                      <th>Apellidos</th>
+                      <th>Puesto</th>
+                      <th>Telefono</th>
+                      <th>Email</th>
+                      <th>Fecha Registro</th>
+                      <th>Configurar</th>
+                      <th>Descargar QR</th>
                   </tr>
               </tfoot>
           </table>
@@ -351,6 +278,29 @@ div.dataTables_wrapper {
   </div>
 
 
+
+  <div id="Credencial" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+          <h5 class="modal-title" id="LabelApartados">Codigo del empleado</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="qrcode" class="d-flex justify-content-center"></div>
+        <br>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary  " onclick="SaveCred()">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
     <!--   Core JS Files   -->
   <script src="assets/js/core/jquery.min.js"></script>
   <script src="assets/js/core/popper.min.js"></script>
@@ -393,11 +343,54 @@ div.dataTables_wrapper {
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="assets/demo/demo.js"></script>
   <script src="js/GeneralFuctions.js"></script>
+  <script src="js/globalvarfun.js"></script>
+  <script src="js/qrcode.min.js"></script>
+  <script src="js/html2canvas.js"></script>
+
   <script>
+
+function OpenCred(row) {
+  var qrcode = new QRCode("qrcode");
+  var id = row.parentNode.parentElement.children[0].textContent;
+  qrcode.makeCode(id);
+}
+
+  function SaveCred() {
+    html2canvas(document.querySelector("#qrcode")).then(canvas => {
+        saveAs(canvas.toDataURL(), 'Codigo.png');
+      });
+  }
+
+  function ReloadTable() {
+    $.ajax({
+      type : 'POST',
+      url  : 'php/getusers.php',
+      dataType: 'json',
+      cache: false,
+      success :  function(result)
+          {
+           $('#users').DataTable({
+                  language:languageesp,
+                  "data": result,
+                  columns: [
+                    { "data": "id" },
+                    { "data": "firstname" },
+                    { "data": "lastname" },
+                    { "data": "stall" },
+                    { "data": "tel" },
+                    { "data": "email" },
+                    { "data": "reg_date" },
+                    {"defaultContent": "<button onclick='getitem(this)'>Modificar</button>"},
+                    {"defaultContent": "<button data-toggle='modal' data-target='#Credencial' onclick='OpenCred(this)'>Codigo</button>"}
+                  ],
+                });
+          }
+      });
+  }
+
+
     $(document).ready(function() {
-
-      $('table.display').DataTable();
-
+      ReloadTable();
 
       $().ready(function() {
         $sidebar = $('.sidebar');

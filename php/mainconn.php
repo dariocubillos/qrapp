@@ -1,6 +1,11 @@
 
 <?php
 
+$querycountusers =  "SELECT COUNT(*) as datos FROM `users`";
+$querycountenters = "SELECT COUNT(*) as datos FROM `reg` WHERE day_work =CURDATE()";
+$querycountexits =  "SELECT COUNT(*) as datos FROM `reg` WHERE day_work =CURDATE() AND exit_time != 0";
+
+
 class MysqlConn
 {
   protected $servername = "localhost";
@@ -49,9 +54,17 @@ function ExecuteQueryx($value)
        {
           print_r($row);
        }*/
-
 }
 
+function QueryEcho($query)
+{
+  // code...
+  $result = $this->conn->query($query);
+
+  $row=mysqli_fetch_row($result);
+
+  echo $row[0];
+}
 
 function FunctionName($usr,$pass)
 {
