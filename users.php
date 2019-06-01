@@ -174,6 +174,7 @@ div.dataTables_wrapper {
                       <th>Nombre</th>
                       <th>Apellidos</th>
                       <th>Puesto</th>
+                      <th>Grado</th>
                       <th>Telefono</th>
                       <th>Email</th>
                       <th>Fecha Registro</th>
@@ -190,6 +191,7 @@ div.dataTables_wrapper {
                       <th>Nombre</th>
                       <th>Apellidos</th>
                       <th>Puesto</th>
+                      <th>Grado</th>
                       <th>Telefono</th>
                       <th>Email</th>
                       <th>Fecha Registro</th>
@@ -377,6 +379,7 @@ function OpenCred(row) {
                     { "data": "firstname" },
                     { "data": "lastname" },
                     { "data": "stall" },
+                    { "data": "grade" },
                     { "data": "tel" },
                     { "data": "email" },
                     { "data": "reg_date" },
