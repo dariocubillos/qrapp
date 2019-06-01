@@ -29,7 +29,8 @@
 				</div>
           <div class="row">
             <div class="col-12" style="text-align:center; padding-top:10rem;">
-              <h1 id="titleinfo" style="text-align: center;">Esperando...</h1>
+              <h2 id="titleinfo" style="text-align: center; margin-right:2.3em;">Esperando...</h2>
+              <h2 id="nombreuser" style="text-align: center; margin-right:2.3em;"></h2>
               <br>
               <br>
             </div>
@@ -61,7 +62,19 @@
                           type:  'post', //método de envio
                           success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
                                         if (Number(response) == true) {
-                                          document.getElementById("titleinfo").innerHTML = "Aprobado...";
+                                          var param = {
+                                                        "usr" : content
+                                                      };
+                                          $.ajax({
+                                                data:  param, //datos que se envian a traves de ajax
+                                                url:   'php/getsingleuser.php', //archivo que recibe la peticion
+                                                type:  'post', //método de envio
+                                                success:  function (response) {
+                                                  var obj = JSON.parse(response);
+                                                  document.getElementById("titleinfo").innerHTML = "Bienvenido";
+                                                  document.getElementById("nombreuser").innerHTML = obj[0]['firstname']+" "+obj[0]['lastname'];
+                                                }
+                                             });
                                         }else {
                                           document.getElementById("titleinfo").innerHTML = "Error...";
                                         }
