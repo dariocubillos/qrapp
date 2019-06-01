@@ -171,40 +171,27 @@ div.dataTables_wrapper {
         <h3 class="card-header">Registros hoy</h2>
         <div class="card-body">
           <table id="regtoday" class="display" style="width:100%">
-              <thead>
-                  <tr>
-<<<<<<< HEAD
-                    <th>ID Registro</th>
-                    <th>Usuario</th>
-                    <th>Entrada</th>
-                    <th>Salida</th>
-                    <th>Dia</th>
-=======
-                      <th>Nombre</th>
-                      <th>ID</th>
-                      <th>Entrada</th>
-                      <th>Salida</th>
-                      <th>Dia</th>
->>>>>>> e0e13def1d0f0adb344c43b0aeb32fb5b3203a5f
-                  </tr>
-              </thead>
-              <tbody>
-              </tbody>
-              <tfoot>
-                  <tr>
-<<<<<<< HEAD
-                    <th>ID Registro</th>
-                    <th>Usuario</th>
-=======
-                    <th>Nombre</th>
-                    <th>ID</th>
->>>>>>> e0e13def1d0f0adb344c43b0aeb32fb5b3203a5f
-                    <th>Entrada</th>
-                    <th>Salida</th>
-                    <th>Dia</th>
-                  </tr>
-              </tfoot>
-          </table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>ID</th>
+                            <th>Entrada</th>
+                            <th>Salida</th>
+                            <th>Dia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                          <th>Nombre</th>
+                          <th>ID</th>
+                          <th>Entrada</th>
+                          <th>Salida</th>
+                          <th>Dia</th>
+                        </tr>
+                    </tfoot>
+                </table>
          </div>
         </div>
 
