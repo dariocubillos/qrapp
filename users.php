@@ -91,6 +91,7 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                   <a class="dropdown-item" data-toggle="modal" data-target="#NewUser" href="#">Añadir usuarios</a>
                   <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter" href="#">Cambio de contraseña</a>
+                  <a class="dropdown-item" data-toggle="modal" onclick="backbupdb()" href="#">Respaldar DB</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" onclick="exit()" href="#">Cerrar sesion</a>
                 </div>
