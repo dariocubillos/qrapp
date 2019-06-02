@@ -402,8 +402,17 @@ div.dataTables_wrapper {
   <script src="js/globalvarfun.js"></script>
   <script src="js/qrcode.min.js"></script>
   <script src="js/html2canvas.js"></script>
+  <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>
+  <script type="text/javascript" charset="utf8" src="js/dataTables.bootstrap4.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="js/dataTables.fixedHeader.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="js/dataTables.buttons.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="js/pdfmake.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="js/vfs_fonts.js"></script>
+  <script type="text/javascript" charset="utf8" src="js/buttons.html5.min.js"></script>
 
   <script>
+  var d = new Date();
+  var strDate = d.getFullYear() + "/" + (d.getMonth()+1) + "/" + d.getDate();
 
   var  idmodalupdate;
   var    nombreupdate;
@@ -485,6 +494,9 @@ function OpenCred(row) {
       success :  function(result)
           {
            $('#users').DataTable({
+             dom: 'Bfrtip',
+         buttons: [  'excel'
+       ], fixedHeader: true,
                   language:languageesp,
                   "data": result,
                   columns: [

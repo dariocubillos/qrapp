@@ -10,8 +10,8 @@
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/robotocss.css" />
+  <link rel="stylesheet" href="css/font-awesome.min.css">
   <!-- CSS Files -->
   <link href="assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
@@ -49,7 +49,7 @@
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="assets/img/sidebar-1.jpg">
       <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+        <a href="" class="simple-text logo-normal">
           Administrador
         </a>
       </div>
@@ -353,9 +353,17 @@ div.dataTables_wrapper {
   <script src="assets/demo/demo.js"></script>
   <script src="js/GeneralFuctions.js"></script>
   <script src="js/globalvarfun.js"></script>
-
+  <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>
+  <script type="text/javascript" charset="utf8" src="js/dataTables.bootstrap4.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="js/dataTables.fixedHeader.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="js/dataTables.buttons.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="js/pdfmake.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="js/vfs_fonts.js"></script>
+  <script type="text/javascript" charset="utf8" src="js/buttons.html5.min.js"></script>
 
   <script>
+  var d = new Date();
+  var strDate = d.getFullYear() + "/" + (d.getMonth()+1) + "/" + d.getDate();
 
   function RealoadTableAllReg() {
     $.ajax({
@@ -366,6 +374,9 @@ div.dataTables_wrapper {
       success :  function(result)
           {
            $('#allreg').DataTable({
+             dom: 'Bfrtip',
+         buttons: [  'excel'
+       ], fixedHeader: true,
                   language:languageesp,
                   "data": result,
                   columns: [
@@ -391,6 +402,9 @@ div.dataTables_wrapper {
       success :  function(result)
           {
            $('#regtoday').DataTable({
+             dom: 'Bfrtip',
+         buttons: [  'excel'
+       ], fixedHeader: true,
                   language:languageesp,
                   "data": result,
                   columns: [
