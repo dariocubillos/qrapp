@@ -13,6 +13,6 @@ $grade = $_POST['grado'];
 $email = $_POST['email'];
 
 
-printf($Mysql->RegisterUser($nss,$nombre, $apellidos, $puesto,$telefono,$grade,$email));
+printf($Mysql->UpdateUser($nss,$nombre, $apellidos, $puesto,$telefono,$grade,$email));
 
  ?>

@@ -84,12 +84,20 @@ function FunctionName($usr,$pass)
   return $user;
 }
 
-function RegisterUser($id,$Nombre, $Apellidos, $Puesto, $Telefono , $Email)
+function RegisterUser($id,$Nombre, $Apellidos, $Puesto, $Telefono , $Grado ,$Email)
 {
   // code...
-$result = $this->conn->query("INSERT INTO `users` (`id`, `firstname`, `lastname`, `stall` ,`tel`,`email`) VALUES ('$id','$Nombre','$Apellidos', '$Puesto','$Telefono','$Email')");
+$result = $this->conn->query("INSERT INTO `users` (`id`, `firstname`, `lastname`, `grade` ,`stall` ,`tel`,`email`) VALUES ('$id','$Nombre','$Apellidos','$Grado','$Puesto','$Telefono','$Email')");
 return($result);
 }
+
+function UpdateUser($id,$Nombre, $Apellidos, $Puesto, $Telefono ,$Grado,$Email)
+{
+  // code...
+$result = $this->conn->query("UPDATE `users` SET `firstname` = '$Nombre', `lastname` = '$Apellidos', `grade` = '$Grado', `stall` = '$Puesto', `tel` = '$Telefono', `email` = '$Email' WHERE id = '$id'");
+return($result);
+}
+
 
 
 public function RegisterToday($usr)

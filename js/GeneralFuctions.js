@@ -19,6 +19,7 @@ var  nombre = $("#nombre").val();
 var  apellidos = $("#apellidos").val();
 var  puesto = $("#puesto").val();
 var  telefono = $("#telefono").val();
+var  grade = $("#grade").val();
 var  email = $("#email").val();
 
 var param = {
@@ -27,10 +28,11 @@ var param = {
               "apellidos" : apellidos,
               "puesto" : puesto,
               "telefono" : telefono,
+              "grado": grade,
               "email" : email
             };
 
-if (nss != '' && nombre != '' && apellidos != '' && puesto != '' && telefono != '' & email != '') {
+if (nss != '' && nombre != '' && apellidos != '' && puesto != '' && telefono != '' & email != '' && grade != '') {
   $.ajax({
         data:  param, //datos que se envian a traves de ajax
         url:   'php/registeruser.php', //archivo que recibe la peticion

@@ -178,6 +178,8 @@ div.dataTables_wrapper {
                             <th>Entrada</th>
                             <th>Salida</th>
                             <th>Dia</th>
+                            <th>Nombre</th>
+                            <th>Apellidos</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -189,6 +191,8 @@ div.dataTables_wrapper {
                           <th>Entrada</th>
                           <th>Salida</th>
                           <th>Dia</th>
+                          <th>Nombre</th>
+                          <th>Apellidos</th>
                         </tr>
                     </tfoot>
                 </table>
@@ -206,6 +210,8 @@ div.dataTables_wrapper {
                             <th>Entrada</th>
                             <th>Salida</th>
                             <th>Dia</th>
+                            <th>Nombre</th>
+                            <th>Apellidos</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -218,6 +224,8 @@ div.dataTables_wrapper {
                           <th>Entrada</th>
                           <th>Salida</th>
                           <th>Dia</th>
+                          <th>Nombre</th>
+                          <th>Apellidos</th>
                         </tr>
                     </tfoot>
                 </table>
@@ -365,6 +373,8 @@ div.dataTables_wrapper {
                     { "data": "enter_time" },
                     { "data": "exit_time" },
                     { "data": "day_work" },
+                    { "data": "Nombre" },
+                    { "data": "Apellidos" }
                   ],
                 });
           }
@@ -388,6 +398,8 @@ div.dataTables_wrapper {
                     { "data": "enter_time" },
                     { "data": "exit_time" },
                     { "data": "day_work" },
+                    { "data": "Nombre" },
+                    { "data": "Apellidos" },
                   ],
                 });
           }

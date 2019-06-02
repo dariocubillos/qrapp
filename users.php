@@ -27,7 +27,6 @@
 
   if (isset($_COOKIE["usr"]) && isset($_COOKIE["pass"])) {
     // code...
-
   }else {
     // code...
     setcookie("usr",$_GET['usr'],time()+3600);
@@ -202,12 +201,61 @@ div.dataTables_wrapper {
           </table>
          </div>
         </div>
-
         </div>
       </div>
     </div>
 
   <!-- Modal -->
+
+  <div class="modal fade" id="UpdateUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLongTitle">Actualizar Usuario</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+              <div class="col-12">
+                <input id="nssupdate" class="form-control" type="text" placeholder="Numero de seguridad social">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <input id="nombreupdate" class="form-control" type="text" placeholder="Nombre">
+            </div>
+            <div class="col-6">
+              <input id="apellidosupdate" class="form-control" type="text" placeholder="Apellidos">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <input id="puestoupdate" class="form-control" type="text" placeholder="Puesto">
+            </div>
+            <div class="col-6">
+              <input id="telefonoupdate" class="form-control" type="number" placeholder="Telefono">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <input id="gradoupdate" class="form-control" type="text" placeholder="Grado Academico">
+            </div>
+            <div class="col-6">
+              <input id="emailupdate" class="form-control" type="text" placeholder="Email">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" onclick="updateuser()">Guardar Usuario</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -266,7 +314,10 @@ div.dataTables_wrapper {
             </div>
           </div>
           <div class="row">
-            <div class="col-12">
+            <div class="col-6">
+              <input id="grade" class="form-control" type="text" placeholder="Grado Academico">
+            </div>
+            <div class="col-6">
               <input id="email" class="form-control" type="text" placeholder="Email">
             </div>
           </div>
@@ -290,13 +341,15 @@ div.dataTables_wrapper {
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" id="qrcontentmain">
+          <div class="row" style="align-items: center; justify-content: center"> <h3 id="NombreColocar"></h3></div>
           <div id="qrcode" class="d-flex justify-content-center"></div>
+          <div class="row" style="align-items: center; justify-content: center"> <h3 id="PuestoColocar"></h3></div>
         <br>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary  " onclick="SaveCred()">Guardar</button>
-        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary  " onclick="SaveCred()">Guardar</button>
       </div>
     </div>
   </div>
@@ -351,14 +404,73 @@ div.dataTables_wrapper {
 
   <script>
 
+  var  idmodalupdate;
+  var    nombreupdate;
+  var   apellidoupdate;
+  var    puestoupdate;
+  var    gradoupdate;
+  var    telefonoupdate;
+  var    emailupdate;
+
+  function getitem(row) {
+
+    idmodalupdate = row.parentNode.parentElement.children[0].textContent;
+    nombreupdate = row.parentNode.parentElement.children[1].textContent;
+    apellidoupdate = row.parentNode.parentElement.children[2].textContent;
+    puestoupdate = row.parentNode.parentElement.children[3].textContent;
+    gradoupdate = row.parentNode.parentElement.children[4].textContent;
+    telefonoupdate = row.parentNode.parentElement.children[5].textContent;
+    emailupdate = row.parentNode.parentElement.children[6].textContent;
+
+    $("#nssupdate").val(idmodalupdate);
+    $("#nombreupdate").val(nombreupdate);
+    $("#apellidosupdate").val(puestoupdate);
+    $("#puestoupdate").val(puestoupdate);
+    $("#telefonoupdate").val(telefonoupdate);
+    $("#gradoupdate").val(gradoupdate);
+    $("#emailupdate").val(emailupdate);
+
+  }
+
+  function updateuser() {
+
+        var param = {
+            "nss" : $("#nssupdate").val(),
+            "nombre":$("#nombreupdate").val() ,
+            "apellidos":$("#apellidosupdate").val(),
+            "puesto":$("#puestoupdate").val(),
+            "telefono":$("#telefonoupdate").val(),
+            "grado":$("#gradoupdate").val(),
+            "email":$("#emailupdate").val()
+                };
+
+                $.ajax({
+                      data:  param, //datos que se envian a traves de ajax
+                      url:   'php/updateuser.php', //archivo que recibe la peticion
+                      type:  'post', //método de envio
+                      success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+                                    if (Number(response) == true) {
+                                      alert("Usuario Actualizado.");
+                                      location.reload();
+                                    }else {
+                                      alert("Error en la actualizacion.");
+                                    }
+                                  }
+
+               });
+  }
+
 function OpenCred(row) {
+  $("#qrcode").empty();
   var qrcode = new QRCode("qrcode");
   var id = row.parentNode.parentElement.children[0].textContent;
+  $("#NombreColocar").text(row.parentNode.parentElement.children[1].textContent+" "+row.parentNode.parentElement.children[2].textContent);
+  $("#PuestoColocar").text(row.parentNode.parentElement.children[4].textContent);
   qrcode.makeCode(id);
 }
 
   function SaveCred() {
-    html2canvas(document.querySelector("#qrcode")).then(canvas => {
+    html2canvas(document.querySelector("#qrcontentmain")).then(canvas => {
         saveAs(canvas.toDataURL(), 'Codigo.png');
       });
   }
@@ -383,7 +495,7 @@ function OpenCred(row) {
                     { "data": "tel" },
                     { "data": "email" },
                     { "data": "reg_date" },
-                    {"defaultContent": "<button onclick='getitem(this)'>Modificar</button>"},
+                    {"defaultContent": "<button data-toggle='modal' data-target='#UpdateUserModal' onclick='getitem(this)'>Modificar</button>"},
                     {"defaultContent": "<button data-toggle='modal' data-target='#Credencial' onclick='OpenCred(this)'>Codigo</button>"}
                   ],
                 });
