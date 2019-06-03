@@ -83,6 +83,7 @@
 
         setTimeout(function () {
             document.getElementById("titleinfo").innerHTML = "Esperando...";
+            document.getElementById("nombreuser").innerHTML = "";
           }, 3000);
       });
       Instascan.Camera.getCameras().then(function (cameras) {
