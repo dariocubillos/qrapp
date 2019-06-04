@@ -123,6 +123,9 @@ if ($uservalidate->num_rows > 0) {
     if ($result1->num_rows > 0) {
       // code...
       $result = $this->conn->query("UPDATE `reg` SET  `exit_time`= CURRENT_TIMESTAMP WHERE userfk = '$usr' AND day_work = CURRENT_DATE()"); //if exist reg today
+    }else {
+      // code...
+      $result = 3;
     }
 
   }else {

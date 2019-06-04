@@ -75,8 +75,10 @@
                                                   document.getElementById("nombreuser").innerHTML = obj[0]['firstname']+" "+obj[0]['lastname'];
                                                 }
                                              });
-                                        }else {
-                                          document.getElementById("titleinfo").innerHTML = "Error...";
+                                        } else if (Number(response) == 3) {
+                                          document.getElementById("titleinfo").innerHTML = "Ya firmo su salida.";
+                                        } else {
+                                          document.getElementById("titleinfo").innerHTML = "Error QR no valido...";
                                         }
                                   }
                            });
