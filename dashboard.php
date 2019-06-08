@@ -181,6 +181,7 @@ div.dataTables_wrapper {
                             <th>Dia</th>
                             <th>Nombre</th>
                             <th>Apellidos</th>
+                            <th>Retraso/A Tiempo</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -194,6 +195,7 @@ div.dataTables_wrapper {
                           <th>Dia</th>
                           <th>Nombre</th>
                           <th>Apellidos</th>
+                          <th>Retraso/A Tiempo</th>
                         </tr>
                     </tfoot>
                 </table>
@@ -213,6 +215,7 @@ div.dataTables_wrapper {
                             <th>Dia</th>
                             <th>Nombre</th>
                             <th>Apellidos</th>
+                            <th>Retraso/A Tiempo</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -227,6 +230,7 @@ div.dataTables_wrapper {
                           <th>Dia</th>
                           <th>Nombre</th>
                           <th>Apellidos</th>
+                          <th>Retraso/A Tiempo</th>
                         </tr>
                     </tfoot>
                 </table>
@@ -386,7 +390,17 @@ div.dataTables_wrapper {
                     { "data": "exit_time" },
                     { "data": "day_work" },
                     { "data": "Nombre" },
-                    { "data": "Apellidos" }
+                    { "data": "Apellidos" },
+                    {
+                    "mData": "enter_time",
+                    "mRender": function (data, type, row) {
+                      if (data >  "08:15:00") {
+                          return  "RETRASADO";
+                      }else {
+                        return "A TIEMPO";
+                      }
+                    }
+                   }
                   ],
                 });
           }
@@ -415,6 +429,16 @@ div.dataTables_wrapper {
                     { "data": "day_work" },
                     { "data": "Nombre" },
                     { "data": "Apellidos" },
+                    {
+                    "mData": "enter_time",
+                    "mRender": function (data, type, row) {
+                      if (data >  "08:15:00") {
+                          return  "RETRASADO";
+                      }else {
+                        return "A TIEMPO";
+                      }
+                    }
+                   }
                   ],
                 });
           }
