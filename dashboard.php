@@ -6,7 +6,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Administrador
+    Reporte de Asistencias
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -15,7 +15,8 @@
   <!-- CSS Files -->
   <link href="assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="assets/demo/demo.css" rel="stylesheet" />
+  <link href="css/jquery.dataTables.min.css" rel="stylesheet" />
+  <link href="css/buttons.dataTables.min.css" rel="stylesheet" />
 </head>
 
 <body class="">
@@ -55,7 +56,7 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item active">
+          <li class="nav-item active" style="width: 80%;">
             <a class="nav-link" href="./dashboard.php">
               <i class="material-icons">dashboard</i>
               <p>PanelPrincipal</p>
@@ -169,7 +170,7 @@ div.dataTables_wrapper {
 </style>
 
       <div class="card">
-        <h3 class="card-header">Registros hoy</h2>
+        <h3 class="card-header">Registros hoy</h3>
         <div class="card-body">
           <table id="regtoday" class="display" style="width:100%">
                     <thead>
@@ -181,7 +182,7 @@ div.dataTables_wrapper {
                             <th>Dia</th>
                             <th>Nombre</th>
                             <th>Apellidos</th>
-                            <th>Retraso/A Tiempo</th>
+                            <th>Retardo/A Tiempo</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -195,7 +196,7 @@ div.dataTables_wrapper {
                           <th>Dia</th>
                           <th>Nombre</th>
                           <th>Apellidos</th>
-                          <th>Retraso/A Tiempo</th>
+                          <th>Retardo/A Tiempo</th>
                         </tr>
                     </tfoot>
                 </table>
@@ -205,6 +206,18 @@ div.dataTables_wrapper {
         <div class="card">
           <h2 class="card-header">Todos los registros</h2>
           <div class="card-body">
+		    	
+		    <div class="row" style="padding-left: 20%  !important;">
+		    	<h5 style="padding-top: .5% !important;">Filtrado de fecha</h5>
+		    	<div class="col-3">	
+					<input style="width: 15em;" type="text" name="mindate" id="mindate" placeholder="Fecha entrada (AAAA-MM-DD)">
+		    	</div>
+		    	<div class="col-3" >	
+	          			<input style="width: 15em;" type="text" name="maxdate" id="maxdate" placeholder="Fecha salida (AAAA-MM-DD)">
+		    	</div>
+			</div>
+			<br>	
+            
             <table id="allreg" class="display" style="width:100%">
                     <thead>
                         <tr>
@@ -215,7 +228,7 @@ div.dataTables_wrapper {
                             <th>Dia</th>
                             <th>Nombre</th>
                             <th>Apellidos</th>
-                            <th>Retraso/A Tiempo</th>
+                            <th>Retardo/A Tiempo</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -230,7 +243,7 @@ div.dataTables_wrapper {
                           <th>Dia</th>
                           <th>Nombre</th>
                           <th>Apellidos</th>
-                          <th>Retraso/A Tiempo</th>
+                          <th>Retardo/A Tiempo</th>
                         </tr>
                     </tfoot>
                 </table>
@@ -239,7 +252,6 @@ div.dataTables_wrapper {
         </div>
       </div>
     </div>
-  </div>
   <!-- Modal -->
   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -314,8 +326,8 @@ div.dataTables_wrapper {
 
 
 
-    <!--   Core JS Files   -->
-  <script src="assets/js/core/jquery.min.js"></script>
+     <!--   Core JS Files   -->
+     <script src="assets/js/core/jquery.min.js"></script>
   <script src="assets/js/core/popper.min.js"></script>
   <script src="assets/js/core/bootstrap-material-design.min.js"></script>
   <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
@@ -357,17 +369,21 @@ div.dataTables_wrapper {
   <script src="assets/demo/demo.js"></script>
   <script src="js/GeneralFuctions.js"></script>
   <script src="js/globalvarfun.js"></script>
-  <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>
-  <script type="text/javascript" charset="utf8" src="js/dataTables.bootstrap4.min.js"></script>
-  <script type="text/javascript" charset="utf8" src="js/dataTables.fixedHeader.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="js/dataTables.bootstrap4.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.min.js"></script>
   <script type="text/javascript" charset="utf8" src="js/dataTables.buttons.min.js"></script>
   <script type="text/javascript" charset="utf8" src="js/pdfmake.min.js"></script>
   <script type="text/javascript" charset="utf8" src="js/vfs_fonts.js"></script>
   <script type="text/javascript" charset="utf8" src="js/buttons.html5.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="js/buttons.print.min.js"></script>
+  
+
 
   <script>
-  var d = new Date();
+    
+    var d = new Date();
   var strDate = d.getFullYear() + "/" + (d.getMonth()+1) + "/" + d.getDate();
+  var tableregjs;
 
   function RealoadTableAllReg() {
     $.ajax({
@@ -377,10 +393,25 @@ div.dataTables_wrapper {
       cache: false,
       success :  function(result)
           {
-           $('#allreg').DataTable({
-             dom: 'Bfrtip',
-         buttons: [  'excel'
-       ], fixedHeader: true,
+        tableregjs =  $('#allreg').DataTable({
+          dom: 'Bfrtip',
+             buttons: [ {
+              extend: 'print',
+              messageTop: 'This print was produced using the Print button for DataTables',
+              customize: function ( win ) {
+                    $(win.document.body)
+                        .css( 'font-size', '10pt' )
+                        .prepend(
+                          '<img src="http://localhost/qrapp/image.png" style="position:absolute; top:0; left:0;margin-top:50px;" />'
+                        );
+ 
+                    $(win.document.body).find( '#allreg' )
+                        .addClass( 'compact' )
+                        .css( 'font-size', 'inherit' );
+                }
+            }
+
+        ], fixedHeader: true,
                   language:languageesp,
                   "data": result,
                   columns: [
@@ -395,7 +426,7 @@ div.dataTables_wrapper {
                     "mData": "enter_time",
                     "mRender": function (data, type, row) {
                       if (data >  "08:15:00") {
-                          return  "RETRASADO";
+                          return  "RETARDO";
                       }else {
                         return "A TIEMPO";
                       }
@@ -417,8 +448,23 @@ div.dataTables_wrapper {
           {
            $('#regtoday').DataTable({
              dom: 'Bfrtip',
-         buttons: [  'excel'
-       ], fixedHeader: true,
+             buttons: [ {
+              extend: 'print',
+              messageTop: 'This print was produced using the Print button for DataTables',
+              customize: function ( win ) {
+                    $(win.document.body)
+                        .css( 'font-size', '10pt' )
+                        .prepend(
+                          '<img src="http://localhost/qrapp/image.png" style="position:absolute; top:0; left:0;margin-top:100px;" />'
+                        );
+ 
+                    $(win.document.body).find( '#regtoday' )
+                        .addClass( 'compact' )
+                        .css( 'font-size', 'inherit' );
+                }
+            }
+
+        ], fixedHeader: true,
                   language:languageesp,
                   "data": result,
                   columns: [
@@ -433,7 +479,7 @@ div.dataTables_wrapper {
                     "mData": "enter_time",
                     "mRender": function (data, type, row) {
                       if (data >  "08:15:00") {
-                          return  "RETRASADO";
+                          return  "RETARDO";
                       }else {
                         return "A TIEMPO";
                       }
@@ -447,10 +493,68 @@ div.dataTables_wrapper {
 
     $(document).ready(function() {
 
-      RealoadTableAllReg();
+      //RealoadTableAllReg();
       RealoadTableAllRegToday();
 
-      $().ready(function() {
+$.ajax({
+      type : 'POST',
+      url  : 'php/getregs.php',
+      dataType: 'json',
+      cache: false,
+      success :  function(result)
+          {
+        tableregjs =  $('#allreg').DataTable({
+          dom: 'Bfrtip',
+          buttons: [
+            {
+              extend: 'print',              
+              messageTop: 'This print was produced using the Print button for DataTables',
+              customize: function ( win ) {
+                    $(win.document.body)
+                        .css( 'font-size', '10pt')
+                        .prepend(
+                          '<img src="http://localhost/qrapp/image.png" style="position:absolute; top:0; left:0; margin-top:100px;" />'
+                        );
+ 
+                    $(win.document.body).find( '#allreg' )
+                        .addClass( 'compact' )
+                        .css( 'font-size', 'inherit' );
+                }
+
+            }
+        ], fixedHeader: true,
+                  language:languageesp,
+                  "data": result,
+                  columns: [
+                    { "data": "id" },
+                    { "data": "userfk" },
+                    { "data": "enter_time" },
+                    { "data": "exit_time" },
+                    { "data": "day_work" },
+                    { "data": "Nombre" },
+                    { "data": "Apellidos" },
+                    {
+                    "mData": "enter_time",
+                    "mRender": function (data, type, row) {
+                      if (data >  "08:15:00") {
+                          return  "RETARDO";
+                      }else {
+                        return "A TIEMPO";
+                      }
+                    }
+                   }
+                  ],
+                });
+        $('#mindate').keyup( function() { tableregjs.draw(); } );
+ 		    $('#maxdate').keyup( function() { tableregjs.draw(); } );
+          }
+      });
+
+
+
+        
+
+      $(document).ready(function() {
         $sidebar = $('.sidebar');
 
         $sidebar_img_container = $sidebar.find('.sidebar-background');
@@ -618,6 +722,24 @@ div.dataTables_wrapper {
         });
       });
     });
+
+$.fn.dataTableExt.afnFiltering.push(
+	function( settings, data, dataIndex ) {
+		 var min = Date.parse( $('#mindate').val(), 10 );
+        var max = Date.parse( $('#maxdate').val(), 10 );
+        var age = Date.parse( data[4] ) || 0; // use data for the age column
+ 
+        if ( ( isNaN( min ) && isNaN( max ) ) ||
+             ( isNaN( min ) && age <= max ) ||
+             ( min <= age   && isNaN( max ) ) ||
+             ( min <= age   && age <= max ) )
+        {
+            return true;
+        }
+        return false;
+	}
+);
+
   </script>
 
 
