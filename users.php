@@ -57,7 +57,7 @@
               <p>PanelPrincipal</p>
             </a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item active" style="width: 80%;">
             <a class="nav-link" href="./users.php">
               <i class="material-icons">person</i>
               <p>Usuarios</p>
@@ -165,7 +165,7 @@ div.dataTables_wrapper {
 </style>
 
       <div class="card">
-        <h3 class="card-header">Informacion de usuarios</h3>
+        <h3 class="card-header">Informacion de maestros</h3>
         <div class="card-body">
           <table id="users" class="display" style="width:100%">
               <thead>
@@ -434,7 +434,7 @@ div.dataTables_wrapper {
 
     $("#nssupdate").val(idmodalupdate);
     $("#nombreupdate").val(nombreupdate);
-    $("#apellidosupdate").val(puestoupdate);
+    $("#apellidosupdate").val(apellidoupdate);
     $("#puestoupdate").val(puestoupdate);
     $("#telefonoupdate").val(telefonoupdate);
     $("#gradoupdate").val(gradoupdate);
